@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>叙物设计 | 品牌文化体系</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FAFAF8;
+            --color-text: #1A1A1A;
+            --color-text-secondary: #666666;
+            --color-text-tertiary: #999999;
+            --color-accent: #1A1A1A;
+            --color-border: #E8E8E6;
+            --color-card: #FFFFFF;
+            --font-serif: 'Noto Serif SC', Georgia, serif;
+            --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--color-text);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 40px 80px;
+            position: relative;
+        }
+
+        .hero-logo {
+            margin-bottom: 60px;
+        }
+
+        .hero-logo img {
+            height: 120px;
+            width: auto;
+        }
+
+        .hero-slogan {
+            font-family: var(--font-serif);
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            margin-bottom: 24px;
+            color: var(--color-text);
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            letter-spacing: 0.1em;
+            margin-bottom: 80px;
+        }
+
+        .hero-meta {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: var(--color-text-tertiary);
+            letter-spacing: 0.1em;
+        }
+
+        /* Sections */
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 40px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-heading {
+            font-family: var(--font-serif);
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        .section-content {
+            font-size: 16px;
+            line-height: 2;
+            color: var(--color-text-secondary);
+        }
+
+        .section-content p {
+            margin-bottom: 24px;
+        }
+
+        /* Divider */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--color-text);
+            margin: 60px 0;
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .value-card {
+            padding: 40px 0;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .value-number {
+            font-family: var(--font-serif);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            color: var(--color-text-tertiary);
+            margin-bottom: 16px;
+        }
+
+        .value-title {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .value-subtitle {
+            font-size: 13px;
+            color: var(--color-text-tertiary);
+            font-style: italic;
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+
+        .value-content {
+            font-size: 14px;
+            line-height: 1.9;
+            color: var(--color-text-secondary);
+        }
+
+        .value-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .value-content li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .value-content li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--color-text-tertiary);
+        }
+
+        /* Business Table */
+        .business-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+
+        .business-table th,
+        .business-table td {
+            padding: 20px 0;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .business-table th {
+            font-family: var(--font-serif);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--color-text-tertiary);
+        }
+
+        .business-table td {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Guidelines */
+        .guidelines-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 40px;
+        }
+
+        .guidelines-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .guideline-number {
+            font-family: var(--font-serif);
+            font-size: 11px;
+            color: var(--color-text-tertiary);
+            min-width: 24px;
+        }
+
+        .guideline-content h4 {
+            font-family: var(--font-serif);
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .guideline-content p {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--color-border);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 24px;
+        }
+
+        .footer-logo img {
+            height: 48px;
+            width: auto;
+            opacity: 0.6;
+        }
+
+        .footer-text {
+            font-size: 11px;
+            color: var(--color-text-tertiary);
+            letter-spacing: 0.1em;
+        }
+
+        /* Quote Block */
+        .quote-block {
+            background: var(--color-card);
+            padding: 60px;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: """;
+            font-family: var(--font-serif);
+            font-size: 80px;
+            color: var(--color-border);
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-family: var(--font-serif);
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 1.6;
+            letter-spacing: 0.05em;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Vision Goals */
+        .vision-goals {
+            display: grid;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .vision-goal {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+        }
+
+        .vision-goal-marker {
+            width: 8px;
+            height: 8px;
+            background: var(--color-text);
+            flex-shrink: 0;
+        }
+
+        .vision-goal-text {
+            font-size: 15px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 16px 24px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            section {
+                padding: 60px 24px;
+            }
+
+            .hero {
+                padding: 100px 24px 60px;
+            }
+
+            .hero-logo img {
+                height: 80px;
+            }
+
+            .quote-block {
+                padding: 40px 24px;
+            }
+
+            .quote-block::before {
+                font-size: 60px;
+                left: 20px;
+            }
+
+            .quote-text {
+                font-size: 18px;
+            }
+
+            .business-table {
+                font-size: 13px;
+            }
+
+            .business-table th,
+            .business-table td {
+                padding: 16px 0;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .header {
+                position: static;
+                background: none;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .nav {
+                display: none;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+
+            .value-card {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <img src="叙物设计 LOGO档案_1.png" alt="叙物设计">
+                <span class="logo-text">叙物设计</span>
+            </div>
+            <nav class="nav">
+                <a href="#mission">使命</a>
+                <a href="#vision">愿景</a>
+                <a href="#values">价值观</a>
+                <a href="#spirit">精神</a>
+                <a href="#business">业务</a>
+                <a href="#talent">人才</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-logo">
+            <img src="叙物设计 LOGO档案_1.png" alt="叙物设计">
+        </div>
+        <h1 class="hero-slogan">空间有故事，叙物来说</h1>
+        <p class="hero-subtitle">成都叙物室内设计公司 · 品牌文化体系</p>
+        <div class="hero-meta">定稿版 · 2026年4月</div>
+    </section>
+
+    <!-- Mission -->
+    <section id="mission">
+        <div class="section-title">Mission</div>
+        <h2 class="section-heading">使命</h2>
+        <div class="section-content">
+            <p>我们存在的意义，是帮助每一个空间找到它的表达——无论是正在成长的品牌、认真生活的家庭、还是被忽视的银发一族。我们相信好的设计不只是装饰，而是让功能性、美学与情感共存。</p>
+        </div>
+        <div class="quote-block">
+            <p class="quote-text">用设计叙事，让空间为每一位使用者说话。</p>
+        </div>
+    </section>
+
+    <!-- Vision -->
+    <section id="vision">
+        <div class="section-title">Vision</div>
+        <h2 class="section-heading">愿景</h2>
+        <div class="section-content">
+            <p>成为成都值得信赖的复合型空间设计力量。</p>
+        </div>
+        <div class="vision-goals">
+            <div class="vision-goal">
+                <div class="vision-goal-marker"></div>
+                <div class="vision-goal-text"><strong>规模目标</strong> — 3-5年内完成从工作室到公司的升级，团队能力与品牌影响力同步成长</div>
+            </div>
+            <div class="vision-goal">
+                <div class="vision-goal-marker"></div>
+                <div class="vision-goal-text"><strong>专业目标</strong> — 在成都设计圈建立可识别的口碑，作品说话，案例传播</div>
+            </div>
+            <div class="vision-goal">
+                <div class="vision-goal-marker"></div>
+                <div class="vision-goal-text"><strong>团队目标</strong> — 让每位设计师都拥有跨类型的设计能力和对好设计的判断力</div>
+            </div>
+            <div class="vision-goal">
+                <div class="vision-goal-marker"></div>
+                <div class="vision-goal-text"><strong>社会目标</strong> — 为认真做品牌的人、认真生活的人、有真实需求的人做好设计</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section id="values">
+        <div class="section-title">Core Values</div>
+        <h2 class="section-heading">核心价值观</h2>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-number">VALUE 01</div>
+                <h3 class="value-title">叙事优先，不做容器</h3>
+                <p class="value-subtitle">空间不是货架，是语言。</p>
+                <div class="value-content">
+                    <p>每一个项目都值得被认真对待。我们拒绝"放进去能用的设计"，追求"说清楚使用者是谁的设计"。用物件叙说故事，是手艺，也是底线。</p>
+                    <ul>
+                        <li>接项目前，先问：这个空间要讲什么故事？</li>
+                        <li>不做没有逻辑支撑的视觉堆砌</li>
+                        <li>用设计语言解决商业问题，而不是用装饰掩盖问题</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="value-card">
+                <div class="value-number">VALUE 02</div>
+                <h3 class="value-title">功能与体验，共生共存</h3>
+                <p class="value-subtitle">好设计让使用者感受到被理解。</p>
+                <div class="value-content">
+                    <p>功能是底线，体验是追求。我们不追风格，追的是——让人愿意待、愿意买、愿意回来。动线、视觉、节奏，所有设计动作都指向同一个结果：真实的体验发生。</p>
+                    <ul>
+                        <li>设计方案第一步永远是梳理功能逻辑</li>
+                        <li>美学服务于功能，不做无效的"好看"</li>
+                        <li>用设计引导行为，而不是强迫适应</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="value-card">
+                <div class="value-number">VALUE 03</div>
+                <h3 class="value-title">真诚交付，不做妥协</h3>
+                <p class="value-subtitle">信任是双向的，选择也是双向的。</p>
+                <div class="value-content">
+                    <p>我们用作品回报每一位客户的信任。对于方向不一致的合作，我们选择不接——这是对客户的负责，也是对团队时间的尊重。</p>
+                    <ul>
+                        <li>不接低预算、低审美、无合作基础的项目</li>
+                        <li>有话直说，不为了签单做虚假承诺</li>
+                        <li>交付的作品，至少让自己满意</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="value-card">
+                <div class="value-number">VALUE 04</div>
+                <h3 class="value-title">设计者有所为</h3>
+                <p class="value-subtitle">做设计是一份手艺活，值得被认真对待。</p>
+                <div class="value-content">
+                    <p>我们希望团队成员：能被甲方认可，能做出让自己骄傲的作品，能在有价值的项目中获得成长。能传播是加分项，但前提是先让自己满意。</p>
+                    <ul>
+                        <li>每个项目都有设计师的个人署名和复盘</li>
+                        <li>鼓励团队参与能展示个人风格的项目</li>
+                        <li>认可"被行业传播"是职业成就的一部分</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="value-card">
+                <div class="value-number">VALUE 05</div>
+                <h3 class="value-title">空间无边界，设计有态度</h3>
+                <p class="value-subtitle">好的设计师不被类型限制。</p>
+                <div class="value-content">
+                    <p>零售、家装、适老化——只要是空间，都值得被认真对待。我们培养的是能驾驭多种空间类型的复合型人才，类型不是边界，能力才是。</p>
+                    <ul>
+                        <li>鼓励设计师接触不同类型的项目</li>
+                        <li>团队内部共享跨类型的设计经验</li>
+                        <li>不设"只能做某类空间"的职业天花板</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spirit -->
+    <section id="spirit">
+        <div class="section-title">Spirit</div>
+        <h2 class="section-heading">企业精神</h2>
+        <div class="quote-block">
+            <p class="quote-text">不追潮流，追答案。</p>
+        </div>
+        <div class="section-content">
+            <p>不跟风，不贴标签，不做表面的风格堆砌。每一个项目的出发点永远是：</p>
+        </div>
+        <div class="vision-goals">
+            <div class="vision-goal">
+                <div class="vision-goal-marker"></div>
+                <div class="vision-goal-text">这个空间要解决什么问题？</div>
+            </div>
+            <div class="vision-goal">
+                <div class="vision-goal-marker"></div>
+                <div class="vision-goal-text">它的主人是谁？</div>
+            </div>
+            <div class="vision-goal">
+                <div class="vision-goal-marker"></div>
+                <div class="vision-goal-text">怎样才能让使用它的人感受到被理解？</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business -->
+    <section id="business">
+        <div class="section-title">Business</div>
+        <h2 class="section-heading">业务定位</h2>
+        <div class="section-content">
+            <p><strong>空间是容器，也是语言。</strong></p>
+            <p>叙物不设业务边界，专注以下领域：</p>
+        </div>
+        <table class="business-table">
+            <thead>
+                <tr>
+                    <th>业务类型</th>
+                    <th>核心关注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>零售空间</td>
+                    <td>品牌叙事、动线逻辑、转化体验</td>
+                </tr>
+                <tr>
+                    <td>家居空间</td>
+                    <td>生活场景、功能优化、情感归属</td>
+                </tr>
+                <tr>
+                    <td>适老空间</td>
+                    <td>安全实用、尊严生活、真实需求</td>
+                </tr>
+                <tr>
+                    <td>其他空间</td>
+                    <td>只要有真实需求，都值得被认真对待</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="divider"></div>
+        <div class="section-content">
+            <p><strong>服务理念</strong>：功能导向，体验落地，品牌叙事，复合执行。</p>
+        </div>
+    </section>
+
+    <!-- Talent -->
+    <section id="talent">
+        <div class="section-title">Talent</div>
+        <h2 class="section-heading">人才理念</h2>
+        <div class="quote-block">
+            <p class="quote-text">在叙物，设计师不做专才，做全才。</p>
+        </div>
+        <div class="section-content">
+            <p>我们希望你：</p>
+        </div>
+        <ul class="guidelines-list">
+            <li>
+                <span class="guideline-number">01</span>
+                <div class="guideline-content">
+                    <h4>对好设计有标准，对烂设计有底线</h4>
+                </div>
+            </li>
+            <li>
+                <span class="guideline-number">02</span>
+                <div class="guideline-content">
+                    <h4>能跟客户讲清楚"为什么这样设计"</h4>
+                </div>
+            </li>
+            <li>
+                <span class="guideline-number">03</span>
+                <div class="guideline-content">
+                    <h4>在甲方认可之前，先让自己满意</h4>
+                </div>
+            </li>
+            <li>
+                <span class="guideline-number">04</span>
+                <div class="guideline-content">
+                    <h4>愿意在不同类型的空间里积累经验和视野</h4>
+                </div>
+            </li>
+        </ul>
+        <div class="divider"></div>
+        <div class="section-content">
+            <p><strong>我们提供：</strong></p>
+        </div>
+        <div class="vision-goals">
+            <div class="vision-goal">
+                <div class="vision-goal-marker"></div>
+                <div class="vision-goal-text">真实项目的跨类型实践机会</div>
+            </div>
+            <div class="vision-goal">
+                <div class="vision-goal-marker"></div>
+                <div class="vision-goal-text">鼓励个人风格的设计土壤</div>
+            </div>
+            <div class="vision-goal">
+                <div class="vision-goal-marker"></div>
+                <div class="vision-goal-text">让作品说话的展示平台</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guidelines -->
+    <section>
+        <div class="section-title">Guidelines</div>
+        <h2 class="section-heading">团队行为准则</h2>
+        <div class="section-content">
+            <p>每个叙物人，在任何一个项目里都应遵循：</p>
+        </div>
+        <ul class="guidelines-list">
+            <li>
+                <span class="guideline-number">01</span>
+                <div class="guideline-content">
+                    <h4>先理解，再设计</h4>
+                    <p>理解空间的使用者，理解他们真实的需求</p>
+                </div>
+            </li>
+            <li>
+                <span class="guideline-number">02</span>
+                <div class="guideline-content">
+                    <h4>功能在前，美学在后</h4>
+                    <p>解决实际问题，再谈风格表达</p>
+                </div>
+            </li>
+            <li>
+                <span class="guideline-number">03</span>
+                <div class="guideline-content">
+                    <h4>有话直说</h4>
+                    <p>对客户、对队友、对自己的想法负责</p>
+                </div>
+            </li>
+            <li>
+                <span class="guideline-number">04</span>
+                <div class="guideline-content">
+                    <h4>交付满意的作品</h4>
+                    <p>至少让自己觉得这件事做得值</p>
+                </div>
+            </li>
+            <li>
+                <span class="guideline-number">05</span>
+                <div class="guideline-content">
+                    <h4>持续成长</h4>
+                    <p>不固守已有经验，保持对设计的敏感和好奇</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Applications -->
+    <section>
+        <div class="section-title">Application</div>
+        <h2 class="section-heading">应用场景</h2>
+        <table class="business-table">
+            <thead>
+                <tr>
+                    <th>场景</th>
+                    <th>用途</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>内部文化</td>
+                    <td>团队共同愿景和行为准则，让每个人知道我们在做什么、为什么做</td>
+                </tr>
+                <tr>
+                    <td>对外宣传</td>
+                    <td>品牌故事的基础叙事，用于官网、介绍、社交媒体</td>
+                </tr>
+                <tr>
+                    <td>招聘入职</td>
+                    <td>让候选人了解我们是谁，我们看重什么</td>
+                </tr>
+                <tr>
+                    <td>员工培训</td>
+                    <td>新人融入和价值观传递的基础文本</td>
+                </tr>
+                <tr>
+                    <td>公司化转型</td>
+                    <td>文化体系先行，为制度建设和团队扩张打好根基</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="叙物设计 LOGO档案_1.png" alt="叙物设计">
+        </div>
+        <p class="footer-text">成都叙物室内设计公司 · 品牌文化体系 · 2026年4月</p>
+    </footer>
+</body>
+</html>
